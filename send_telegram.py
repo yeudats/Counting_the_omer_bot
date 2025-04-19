@@ -1,5 +1,6 @@
 import requests
 import os
+import time
 
 BOT_TOKEN = os.environ["BOT_TOKEN"]
 CHAT_ID = os.environ["CHAT_ID"]
@@ -10,4 +11,6 @@ def send_telegram_message():
     requests.post(url, data=payload)
 
 if __name__ == "__main__":
-    send_telegram_message()
+    while True:
+        send_telegram_message()
+        time.sleep(60)
