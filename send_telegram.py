@@ -6,11 +6,13 @@ BOT_TOKEN = os.environ["BOT_TOKEN"]
 CHAT_ID = os.environ["CHAT_ID"]
 
 def send_telegram_message():
+    counter = 7
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-    payload = {"chat_id": CHAT_ID, "text": "הודעה כל דקה מגיטהאב 🚀"}
+    payload = {"chat_id": CHAT_ID, "text": f"לא לשכוח ספירת העומר \n היום {counter} ימים לעומר שהם {counter/7} שבועות ו{counter%7} ימים"}
+    counter += 1
     requests.post(url, data=payload)
 
 if __name__ == "__main__":
     while True:
-        send_telegram_message()
-        time.sleep(60)
+        if time.localtime().tm_hour == 2 and (time.localtime().tm_min == 44 or time.localtime().tm_min == 45):
+            send_telegram_message()
