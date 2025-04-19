@@ -14,5 +14,5 @@ def send_telegram_message():
 
 if __name__ == "__main__":
     while True:
-        if time.localtime().tm_hour == 2 and (time.localtime().tm_min == 44 or time.localtime().tm_min == 45):
+        if time.localtime().tm_hour == 2 and (time.localtime().tm_min == 55 or time.localtime().tm_min == 56):
             send_telegram_message()
